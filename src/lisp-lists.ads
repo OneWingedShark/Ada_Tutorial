@@ -52,8 +52,9 @@ Private
 		    Item   : in LIST
 		  );
 
-    -- The two following comment lines are commented out until
-    -- parsing is handled in the tutorial.
+    -- The two following comment lines are the old method of
+    -- specifying custom subprograms be used for stream
+    -- interaction:
 
     -- For LIST'Read  Use Read;
     -- For List'Write Use Write;

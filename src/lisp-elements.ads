@@ -7,19 +7,6 @@ Limited with LISP.Lists;
 
 Package LISP.Elements is
 
---  	-- Subtype Real is Float withough non-numeric values. (e.g. NaN)
---  	SubType Real is Float Range Float'First..Float'Last;
---
---  	SubType Long_Real is Long_Long_Float Range
---  	  Long_Long_Float'First..Long_Long_Float'Last;
---
---  	Type Item_Type is
---  	  (	Null_Type,	Boolean_Type,			-- Simple types
---  		Integer_Type,	Real_Type,	Double_Type,	-- Numerics
---  		String_Type,	Symbol_Type,			-- String types
---  		List_Type					-- List Type
---  	  );
-
     -- Data_Type is the enumeration of the various types that an
     -- Element might contain; the values are self-explanitory.
     Type Data_Type is (Empty_Type,

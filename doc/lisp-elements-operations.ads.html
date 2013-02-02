@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+
+  <title>
+    Package: Operations
+  </title>
+  <link rel='stylesheet' href='support/docgen.css' type='text/css'/>
+  <link rel='stylesheet' href='support/tags.css' type='text/css'/>
+  <script src='support/docgen.js' type='text/javascript' charset='utf-8'></script>
+</head>
+<body onload="onloadDoc();">
+
+<div id='leftSide'>
+  <div id='leftSideInside'>
+  <div id='header'>
+    <h2 class="button">Documentation</h2>
+    <a href='toc.html'><div class="button2">Table of Contents</div></a>
+
+    <a href='tree.html'><div class="button2">Class Inheritance Tree</div></a>
+
+  </div>
+
+  <div id='navigation'>
+    <h2 class="button">Navigation</h2>
+    <a href='#Description'><div class="button2">Description</div></a>
+    <a href='#Methods'><div class="button2">Subprograms &amp; Entries</div></a>
+  </div><!-- navigation -->
+  </div>
+</div> <!-- leftSide -->
+
+<div class='default' id='rightSide'>
+ <div id='rightSideInside'>
+ <div id='Index'>
+  <h2>Index</h2>
+  <script type="text/javascript">
+    var names = new Array (
+new Array ('Operable', 'lisp-elements-operations.ads:15:14', 'subp-spec'),
+new Array ('Operable', 'lisp-elements-operations.ads:16:14', 'subp-spec'),
+new Array ('Plus', 'lisp-elements-operations.ads:20:14', 'subp-spec'),
+new Array ('Minus', 'lisp-elements-operations.ads:24:14', 'subp-spec'),
+      new Array ('dummy', '', ''));
+    printIndexList (names);
+  </script>
+  <noscript>
+    <ul>
+      <li class='subp-spec'><a href="#lisp-elements-operations.ads:15:14">Operable</a></li>
+      <li class='subp-spec'><a href="#lisp-elements-operations.ads:16:14">Operable</a></li>
+      <li class='subp-spec'><a href="#lisp-elements-operations.ads:20:14">Plus</a></li>
+      <li class='subp-spec'><a href="#lisp-elements-operations.ads:24:14">Minus</a></li>
+    </ul>
+  </noscript>
+ </div>
+ </div>
+</div>
+
+<div class='default' id='documentation'>
+  <div class='title'>
+    Package:
+<span class="droplink"><i>Operations</i><ul>
+  <li><a href="src_lisp-elements-operations.ads.html">Goto spec source</a></li>
+</ul></span>
+  </div>
+  <div class='subprograms'>
+    <h1><a name='Description' id='Description'></a>Description</h1>
+    <div class="class">
+    <div class='details'><pre><span class="keyword">Package</span> <span class="name_emphasis">LISP.Elements.Operations</span> <span class="keyword">is</span></pre></div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <div class='subprograms'>
+      <h1><a name='Methods' id='Methods'></a>Subprograms &amp; Entries</h1>
+      <div class="class">
+        <h3>
+          <a name='lisp-elements-operations.ads:15:14' id='lisp-elements-operations.ads:15:14'></a>
+<span class="droplink">Operable<ul>
+  <li><a href="src_lisp-elements-operations.ads.html#l15">Goto spec in source</a></li>
+</ul></span>
+        </h3>
+        <div class='details'><pre><span class="keyword">Function</span> <span class="name_emphasis">Operable</span><table><tr><td>(</td><td> <span class="name"><a name="lisp-elements-operations.ads:15:24"></a>Input</span></td><td>: List;</td></tr><tr><td></td><td><span class="name"><a name="lisp-elements-operations.ads:15:38"></a>Element_Type</span></td><td>: Data_Type ) <span class="keyword">Return</span> Boolean;</td></tr></table></pre></div>
+        <div class='comment'><a href="lisp-elements-operations.ads.html#lisp-elements-operations.ads:15:14" title="Operable">Operable</a> tells us that the list can indeed be operated
+on; every function in LISP is a list, but not every list
+is a function.
+Example: What should (1 2 3 4 6) do? On the other hand
+(&quot;+&quot; 1 2 3 4 5) is simple enough - we apply the function
+&quot;+&quot; to the tail, which returns 15.
+</div>
+      </div>
+      <div class="class">
+        <h3>
+          <a name='lisp-elements-operations.ads:16:14' id='lisp-elements-operations.ads:16:14'></a>
+<span class="droplink">Operable<ul>
+  <li><a href="src_lisp-elements-operations.ads.html#l16">Goto spec in source</a></li>
+</ul></span>
+        </h3>
+        <div class='details'><pre><span class="keyword">Function</span> <span class="name_emphasis">Operable</span><table><tr><td>(</td><td> <span class="name"><a name="lisp-elements-operations.ads:16:24"></a>Input</span></td><td>: List ) <span class="keyword">Return</span> Boolean;</td></tr></table></pre></div>
+      </div>
+      <div class="class">
+        <h3>
+          <a name='lisp-elements-operations.ads:20:14' id='lisp-elements-operations.ads:20:14'></a>
+<span class="droplink">Plus<ul>
+  <li><a href="src_lisp-elements-operations.ads.html#l20">Goto spec in source</a></li>
+</ul></span>
+        </h3>
+        <div class='details'><pre><span class="keyword">Function</span> <span class="name_emphasis">Plus</span><table><tr><td>(</td><td> <span class="name"><a name="lisp-elements-operations.ads:20:20"></a>Input</span></td><td>: List ) <span class="keyword">Return</span> Element <span class="keyword">with</span> Pre => <a href="lisp-elements-operations.ads.html#lisp-elements-operations.ads:16:14" title="defined at lisp-elements-operations.ads:16:14">Operable</a>(<a href="lisp-elements-operations.ads.html#lisp-elements-operations.ads:20:20" title="defined at lisp-elements-operations.ads:20:20">Input</a>);</td></tr></table></pre></div>
+        <div class='comment'>Addition.
+</div>
+      </div>
+      <div class="class">
+        <h3>
+          <a name='lisp-elements-operations.ads:24:14' id='lisp-elements-operations.ads:24:14'></a>
+<span class="droplink">Minus<ul>
+  <li><a href="src_lisp-elements-operations.ads.html#l24">Goto spec in source</a></li>
+</ul></span>
+        </h3>
+        <div class='details'><pre><span class="keyword">Function</span> <span class="name_emphasis">Minus</span> <table><tr><td>(</td><td> <span class="name"><a name="lisp-elements-operations.ads:24:22"></a>Input</span></td><td>: List ) <span class="keyword">Return</span> Element <span class="keyword">with</span> pre => <a href="lisp-elements-operations.ads.html#lisp-elements-operations.ads:16:14" title="defined at lisp-elements-operations.ads:16:14">Operable</a>(<a href="lisp-elements-operations.ads.html#lisp-elements-operations.ads:24:22" title="defined at lisp-elements-operations.ads:24:22">Input</a>);</td></tr></table></pre></div>
+        <div class='comment'>Subtraction.
+</div>
+      </div>
+    </div>
+</div> <!-- documentation -->
+
+</body>
+</html>

@@ -7,6 +7,8 @@ project Lisp_Interpreter is
 
    package Ide is
       for Documentation_Dir use "doc";
+      for Vcs_Kind use "Git";
+      for Vcs_Repository_Root use "https://github.com/OneWingedShark/Ada_Tutorial.git";
    end Ide;
 
    package Builder is

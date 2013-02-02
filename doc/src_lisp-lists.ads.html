@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+
+  <title>
+    File: lisp-lists.ads
+  </title>
+  <link rel='stylesheet' href='support/docgen.css' type='text/css'/>
+  <link rel='stylesheet' href='support/tags.css' type='text/css'/>
+  <script src='support/docgen.js' type='text/javascript' charset='utf-8'></script>
+</head>
+<body onload="onloadDoc();">
+
+<div id='leftSide'>
+  <div id='leftSideInside'>
+  <div id='header'>
+    <h2 class="button">Documentation</h2>
+    <a href='toc.html'><div class="button2">Table of Contents</div></a>
+
+    <a href='tree.html'><div class="button2">Class Inheritance Tree</div></a>
+
+  </div>
+  </div>
+</div> <!-- leftSide -->
+
+<div class='subprograms'>
+  <div class='details'><ol><li id="l1"><pre><span class="keyword">With</span> </pre></li>
+<li id="l2"><pre><span class="droplink">LISP.Elements<ul><li><a href="lisp-elements.ads.html#lisp-elements.ads:8:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-elements.ads.html#l8" title="To spec">To spec</a></li><li><a href="src_lisp-elements.adb.html#l6" title="To body">To body</a></li></ul></span>, </pre></li>
+<li id="l3"><pre>Ada.Streams.Stream_IO, </pre></li>
+<li id="l4"><pre>Ada.Containers.Indefinite_Vectors; </pre></li>
+<li id="l5"><pre> </pre></li>
+<li id="l6"><pre><span class="keyword">Use</span> <span class="keyword">All</span> <span class="keyword">Type</span> <span class="droplink">LISP.Elements.Element<ul><li><a href="lisp-elements.ads.html#lisp-elements.ads:32:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-elements.ads.html#l32" title="To spec">To spec</a></li><li><a href="src_lisp-elements.ads.html#l62" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l7"><pre> </pre></li>
+<li id="l8"><pre><span class="keyword">Package</span> <span class="droplink">LISP.Lists<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:8:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l8" title="To spec">To spec</a></li><li><a href="src_lisp-lists.adb.html#l8" title="To body">To body</a></li></ul></span> <span class="keyword">is</span> </pre></li>
+<li id="l9"><pre> </pre></li>
+<li id="l10"><pre>    <span class="comment">-- The following package, &quot;implementation&quot;, is the</span> </pre></li>
+<li id="l11"><pre>    <span class="comment">-- instantiation of a generic package; a generic must be</span> </pre></li>
+<li id="l12"><pre>    <span class="comment">-- explicitly instantiated before its use in your program</span> </pre></li>
+<li id="l13"><pre>    <span class="comment">-- text.</span> </pre></li>
+<li id="l14"><pre>    <span class="keyword">Package</span> <a href="lisp-lists.ads.html#lisp-lists.ads:14:13" title="defined at lisp-lists.ads:14:13">Implementation</a> <span class="keyword">is</span> <span class="keyword">new</span> Ada.Containers.Indefinite_Vectors </pre></li>
+<li id="l15"><pre>      (Index_Type =&gt; Positive,  Element_Type =&gt; <span class="droplink">LISP.Elements.Element<ul><li><a href="lisp-elements.ads.html#lisp-elements.ads:32:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-elements.ads.html#l32" title="To spec">To spec</a></li><li><a href="src_lisp-elements.ads.html#l62" title="To body">To body</a></li></ul></span>); </pre></li>
+<li id="l16"><pre>    <span class="comment">-- PS: The above is using named association, which can be helpful.</span> </pre></li>
+<li id="l17"><pre> </pre></li>
+<li id="l18"><pre>    <span class="comment">-- The following line declares inheritance, with no</span> </pre></li>
+<li id="l19"><pre>    <span class="comment">-- extension to the data of the base object/class; there</span> </pre></li>
+<li id="l20"><pre>    <span class="comment">-- are, however, new &apos;methods&apos; which are added below.</span> </pre></li>
+<li id="l21"><pre>    <span class="keyword">Type</span> <a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="defined at lisp-lists.ads:21:10">LIST</a> <span class="keyword">is</span> <span class="keyword">new</span> Implementation.Vector <span class="keyword">with</span> <span class="keyword">null</span> <span class="keyword">record</span> </pre></li>
+<li id="l22"><pre>&#9;<span class="keyword">with</span> Read =&gt; Read, Write =&gt; Write; </pre></li>
+<li id="l23"><pre>    <span class="comment">-- For some reason, the subtype-rename causes an error on</span> </pre></li>
+<li id="l24"><pre>    <span class="comment">-- visibility; therefore, the type-extension above is used.</span> </pre></li>
+<li id="l25"><pre>    <span class="comment">--     SubType List is Implementation.Vector;</span> </pre></li>
+<li id="l26"><pre> </pre></li>
+<li id="l27"><pre>    <span class="comment">-- Primitive operations are those subprograms which</span> </pre></li>
+<li id="l28"><pre>    <span class="comment">-- interact with a type and are declared before the type is</span> </pre></li>
+<li id="l29"><pre>    <span class="comment">-- frozen. (Read as: in the same declaring unit, before</span> </pre></li>
+<li id="l30"><pre>    <span class="comment">-- some point which the compiler must commit to a type.)</span> </pre></li>
+<li id="l31"><pre>    <span class="comment">--</span> </pre></li>
+<li id="l32"><pre>    <span class="comment">-- The following are primitive operations for LIST.</span> </pre></li>
+<li id="l33"><pre>    <span class="keyword">Function</span> <span class="droplink">Evaluate<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:33:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l190" title="To body">To body</a></li></ul></span>(<span class="droplink">Input<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:33:23" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l190" title="To body">To body</a></li></ul></span> : <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>) <span class="keyword">Return</span> <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>; </pre></li>
+<li id="l34"><pre>    <span class="keyword">Function</span> <span class="droplink">Head<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:34:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l23" title="To body">To body</a></li></ul></span>(<a href="lisp-lists.ads.html#lisp-lists.ads:34:19" title="defined at lisp-lists.ads:34:19">Input</a> : <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>) <span class="keyword">Return</span> <span class="droplink">LISP.Elements.Element<ul><li><a href="lisp-elements.ads.html#lisp-elements.ads:32:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-elements.ads.html#l32" title="To spec">To spec</a></li><li><a href="src_lisp-elements.ads.html#l62" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l35"><pre>    <span class="keyword">Function</span> <span class="droplink">Tail<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:35:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l28" title="To body">To body</a></li></ul></span>(<span class="droplink">Input<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:35:19" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l28" title="To body">To body</a></li></ul></span> : <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>) <span class="keyword">Return</span> <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>; </pre></li>
+<li id="l36"><pre>    <span class="keyword">Function</span> <span class="droplink">To_String<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:36:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l37" title="To body">To body</a></li></ul></span>  (<span class="droplink">Input<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:36:26" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l37" title="To body">To body</a></li></ul></span> : <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span>)   <span class="keyword">Return</span> String; </pre></li>
+<li id="l37"><pre>    <span class="keyword">Function</span> <span class="droplink">Homoginized_List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:37:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l287" title="To body">To body</a></li></ul></span>( <span class="droplink">Input<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:37:32" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.adb.html#l287" title="To body">To body</a></li></ul></span> : <span class="droplink">List<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span> ) <span class="keyword">Return</span> Boolean; </pre></li>
+<li id="l38"><pre> </pre></li>
+<li id="l39"><pre><span class="keyword">Private</span> </pre></li>
+<li id="l40"><pre>    <span class="keyword">Use</span> <span class="droplink">Implementation<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:14:13" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l14" title="To spec">To spec</a></li></ul></span>, Ada.Streams; </pre></li>
+<li id="l41"><pre> </pre></li>
+<li id="l42"><pre>    <span class="comment">-- Read and Write are ptivate because the user can access</span> </pre></li>
+<li id="l43"><pre>    <span class="comment">-- them via LIST&apos;Read and LIST&apos;Write stream operations.</span> </pre></li>
+<li id="l44"><pre> </pre></li>
+<li id="l45"><pre>    <span class="keyword">procedure</span> Read( </pre></li>
+<li id="l46"><pre>&#9;&#9;    Stream : <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">access</span> Root_Stream_Type&apos;Class; </pre></li>
+<li id="l47"><pre>&#9;&#9;    Item   : <span class="keyword">out</span> <span class="droplink">LIST<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span> </pre></li>
+<li id="l48"><pre>&#9;&#9;  ); </pre></li>
+<li id="l49"><pre> </pre></li>
+<li id="l50"><pre>    <span class="keyword">procedure</span> Write( </pre></li>
+<li id="l51"><pre>&#9;&#9;    Stream : <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">access</span> Root_Stream_Type&apos;Class; </pre></li>
+<li id="l52"><pre>&#9;&#9;    Item   : <span class="keyword">in</span> <span class="droplink">LIST<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:21:10" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l21" title="To spec">To spec</a></li></ul></span> </pre></li>
+<li id="l53"><pre>&#9;&#9;  ); </pre></li>
+<li id="l54"><pre> </pre></li>
+<li id="l55"><pre>    <span class="comment">-- The two following comment lines are the old method of</span> </pre></li>
+<li id="l56"><pre>    <span class="comment">-- specifying custom subprograms be used for stream</span> </pre></li>
+<li id="l57"><pre>    <span class="comment">-- interaction:</span> </pre></li>
+<li id="l58"><pre> </pre></li>
+<li id="l59"><pre>    <span class="comment">-- For LIST&apos;Read  Use Read;</span> </pre></li>
+<li id="l60"><pre>    <span class="comment">-- For List&apos;Write Use Write;</span> </pre></li>
+<li id="l61"><pre> </pre></li>
+<li id="l62"><pre><span class="keyword">End</span> <span class="droplink">Lisp.Lists<ul><li><a href="lisp-lists.ads.html#lisp-lists.ads:8:14" title="To API doc">To API doc</a></li><li><a href="src_lisp-lists.ads.html#l8" title="To spec">To spec</a></li><li><a href="src_lisp-lists.adb.html#l8" title="To body">To body</a></li></ul></span>; </pre></li>
+</ol></div>
+</div>
+
+</body>
+</html>
