@@ -1,0 +1,1 @@
+(DEFINE maybe ("A", "B" ,"C" , "G"))
