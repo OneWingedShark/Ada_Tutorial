@@ -8,6 +8,8 @@ Package body LISP.Strings is
     ----------------------------
 
     Generic
+	-- Check_Type is a [near] arbitrary type; it refers to
+	-- the type we wish to convert TO from a String.
 	Type Check_Type is private;
 	-- Here we assume that "Convert" is well-behaved, in
 	-- that it will raise CONSTRAINT_ERROR on an error.
@@ -23,8 +25,10 @@ Package body LISP.Strings is
     -- can, in effect, have the 'Value attribute (for widely)
     -- differing types be passed to our generic instantiations
     -- as defaulted parameters.
-    Function Convert(S : String) Return Integer Renames Integer'Value;
-    Function Convert(S : String) Return Float Renames Real'Base'Value;
+    Function Convert(S : String) Return Integer
+		Renames Integer'Value;
+    Function Convert(S : String) Return Float
+		Renames Real'Base'Value;
 
     ----------------------
     --  GENERIC BODIES  --
@@ -37,7 +41,7 @@ Package body LISP.Strings is
 	-- If it works we return True...
 	return True;
 	-- if it doesn't then we need to catch the exceprion
-	-- and return False
+	-- and return False.
     exception
 	when CONSTRAINT_ERROR => return False;
     End Validation;

@@ -18,10 +18,11 @@ Package body LISP.Lists is
    SEPARATOR : constant Standard.String := ", ";
 
 
-    -- Reterns the first element of the list, if the list is empty it returns
-    -- an Empty_Type element.
+    -- Reterns the first element of the list, if the list is
+    -- empty it returns an Empty_Type element.
    Function Head(Input : List) Return LISP.Elements.Element is
-      (if Input.Length = 0 then Create else Input.First_Element);
+      (if Input.Length = 0 then Create
+       else Input.First_Element);
 
 
     -- Tail returns a copy of the list, less the first element.
@@ -38,7 +39,8 @@ Package body LISP.Lists is
 	-- We define something to hold the string-
 	-- representations of the individual elements, so we
 	-- can construct the list's string.
-	Type String_Set is Array(Positive Range <>) of Access Standard.String;
+	Type String_Set is Array(Positive Range <>) of
+	  Access Standard.String;
 
 	-- Here we provide the function to convert the above
 	-- into a single string, it's nested, overloaded, and
@@ -114,10 +116,13 @@ Package body LISP.Lists is
     Use LISP.Elements, LISP.Strings;
 
 
-    -- Function_Type is merely a callback, the one we will use to define
-    -- (and "register") functions in the interpreter.
+    -- Function_Type is merely a callback, the one we will use
+    -- to define (and "register") functions in the interpreter.
     Type Function_Type is
-	Not Null Access Function ( Input : List ) Return Elements.Element;
+	Not Null Access Function ( Input : List )
+			Return Elements.Element;
+
+    Package C Renames Ada.Containers;
 
     -- The "Function_List_Pkg" paackages define a mappping of
     -- String to the appropriate functions (precompiled/
@@ -125,8 +130,9 @@ Package body LISP.Lists is
     -- ID_String as the Key, however a compiler-error in my
     -- compiler [GNAT GPL 2012 (20120509)] prevents that.
     --
-    -- WORKAROUND:	All key insertions & retrievals be of type Name_String.
-   Package Function_List_Pkg is new Ada.Containers.Indefinite_Ordered_Maps
+    -- WORKAROUND:	All key insertions & retrievals be of
+    --			type Name_String.
+   Package Function_List_Pkg is new  C.Indefinite_Ordered_Maps
      (  Key_Type	=> String,
         Element_Type	=> Function_Type
      );
@@ -134,7 +140,7 @@ Package body LISP.Lists is
     -- Like Function_List_Pkg this package is for associating
     -- functions with their names; in this case, however, the
     -- functions are actually lists which will be executed.
-   Package User_Function_List_Pkg is new Ada.Containers.Indefinite_Ordered_Maps
+   Package User_Function_List_Pkg is new C.Indefinite_Ordered_Maps
      (  Key_Type	=> String,
         Element_Type	=> List
      );
@@ -152,10 +158,12 @@ Package body LISP.Lists is
 	User_Function_List_Pkg.Cursor;
 
     Function Sys_Key_Exists(Name : ID_String) Return Boolean is
-      ( System_Dictionary.Find(Name) /= Function_List_Pkg.No_Element );
+      ( System_Dictionary.Find(Name)
+        /= Function_List_Pkg.No_Element );
 
     Function User_Key_Exists(Name : ID_String) Return Boolean is
-      ( User_Dictionary.Find(Name) /= User_Function_List_Pkg.No_Element );
+      ( User_Dictionary.Find(Name)
+        /= User_Function_List_Pkg.No_Element );
 
 
     -- Get_Function reterns the function associated with the
@@ -308,32 +316,6 @@ Package body LISP.Lists is
 		    Item   : out LIST
 		  ) is separate;
 
---      procedure Read(
---  		    Stream : not null access Root_Stream_Type'Class;
---  		    Item   : out LIST
---  		  ) is
---  	Use ASCII, Ada.Characters.Handling, Ada.Streams.Stream_IO;
---
---  	Subtype Whitespace is Character Range NUL..' '
---  	  with Static_Predicate => Whitespace in NUL | HT..CR |  ' ';
---
---  	-- The following function gets the next non white-space character.
---  	function Get_Next_Character Return Character is
---  	begin
---  	    Return Result : Character:= ASCII.NUL do
---  		loop
---  		    Character'Read( Stream, Result );
---  		    Exit When Result not in Whitespace;
---  		end loop;
---  	    End return;
---
---  	Exception
---  	    When End_Error => Raise Parse_Error;
---  	end Get_Next_Character;
---
---      begin
---  	Null;
---      end Read;
 
     -- Write is simple: wirte out the string representation of
     -- the list to the stream.
@@ -346,8 +328,9 @@ Package body LISP.Lists is
     end Write;
 
 
-    -- We want Operations to have the full-visibility for registering them.
-   Use Elements.Operations; use LISP.Elements;
+    -- We want Operations to have the full-visibility for
+    -- the purpose of registering them.
+   Use Elements.Operations, LISP.Elements;
 Begin
    System_Dictionary.Insert(Key      => "+",
                             New_Item => Plus'Access

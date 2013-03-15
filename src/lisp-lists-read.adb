@@ -48,15 +48,18 @@ procedure Read(
 		Stream : not null access Root_Stream_Type'Class;
 		Item   : out LIST
 	      ) is
-    Use ASCII, Ada.Characters.Handling, Ada.Streams.Stream_IO, LISP.Strings;
+    Use ASCII,
+	Ada.Characters.Handling,
+	Ada.Streams.Stream_IO,
+	LISP.Strings;
 
     -- The actual ASCII Whitespace characters.
     Subtype Whitespace is Character Range NUL..' '
     with Static_Predicate => Whitespace in NUL | HT..CR |  ' ';
 
-    -- The following function gets the next non white-space character.
-    -- Used to "prime the pump" of the stream, as any leading
-    -- whitespace should be disregarded.
+    -- The following function gets the next non-whitespace
+    -- character. It is used to "prime the pump" of the stream,
+    -- so then any leading whitespace should be disregarded.
     function Get_Next_Character Return Character is
     begin
 	Return Result : Character:= ASCII.NUL do

@@ -25,7 +25,7 @@ Private Package LISP.Strings is
 
     -- Conversion functions for Strings & Identifiers.
     Function To_String( Item : Identifier  ) Return String;
-    Function To_Identifier( Item : ID_String ) Return Identifier;
+    Function To_Identifier(Item : ID_String) Return Identifier;
 
     -------------------------------------
     --  String-manipulation Functions  --
@@ -39,9 +39,11 @@ Private Package LISP.Strings is
     -------------------------------------------------------------
     -- It is a PURE_FUNCTION which specifies that it is to be
     -- considered pure for the purposes of code generation.
-    -- This means that the compiler can assume that there are no
-    -- side-effects; particularly: that two calls with identical
-    -- arguments produce the same result.
+    -- This means that the compiler can assume that there are
+    -- no side-effects; particularly: that two calls with
+    -- identical arguments produce the same result.
+    --
+    -- NOTE: It is not the case that the compiler ensures this.
     Function Valid_ID( S : String ) Return Boolean
     with Pure_Function;
 

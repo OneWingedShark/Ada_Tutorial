@@ -55,6 +55,12 @@ Package LISP.Elements is
 Private
     Use LISP.Strings;
 
+    -- Types Access_String & Access_List are defined here for
+    -- no other reason than to reduce line-length in the
+    -- definition of Element's fields.
+    Type Access_String is Not Null Access Standard.String;
+    Type Access_List is Not Null Access LISP.Lists.List'Class;
+
     -- This completes the type-definition for Element.
     -- It is discriminated by a Data_Type value, which is
     -- used to create different internal structures by the
@@ -64,8 +70,8 @@ Private
 	when Empty_Type   => Null;
 	when Integer_Type => Int_Val  : Integer;
 	when Name_Type    => Name_val : Identifier;
-	when String_Type  => Str_val  : not null access Standard.String;
-	when List_Type    => List_Val : Not Null Access LISP.Lists.List'Class;
+	when String_Type  => Str_val  : Access_String;
+	when List_Type    => List_Val : Access_List;
 	End case;
     End Record;
 
@@ -88,7 +94,8 @@ Private
     Function Value( E: Element ) Return Integer is
       ( E.Int_val );
     Function Value( E: Element ) Return String  is
-      ( if E.Data = String_Type then E.Str_val.all else To_String(E.Name_Val) );
+      ( if E.Data = String_Type then E.Str_val.all
+        else To_String(E.Name_Val) );
     Function Create Return Element is
       ( Data => Empty_Type );
     Function Get_Type (Item: Element) return Data_Type is

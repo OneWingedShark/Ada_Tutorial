@@ -16,13 +16,13 @@
 --  |
 --  LISP.Strings
 
-Package LISP is
-Pragma Pure;
+Package LISP with Pure is
 
-   -- Parse_Error is used to signal when there has been a problem parsing.
-   Parse_Error,
-   -- Undefined_Element is used to signal when there is a reference to an
-   -- undefined entity.
+    -- Parse_Error is used to signal when there has been a
+    -- problem parsing.
+    Parse_Error,
+    -- Undefined_Element is used to signal when there is a
+    -- reference to an undefined entity.
     Undefined_Element     : Exception;
 
 End LISP;
