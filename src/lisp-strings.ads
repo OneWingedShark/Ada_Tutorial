@@ -11,13 +11,20 @@
 Pragma Ada_2012;
 Private Package LISP.Strings is
 
-    -- ID_String imposes a few amount of restrictions, as
-    -- we need "+" & "-" to be valid Identifiers; none of its
-    -- characters may be whitespace, and it may not parse as a
-    -- valid number.
+    -- String_Error is for when somep operation on a string is invalid.
+    STRING_ERROR,
+
+    -- Name_Error is for when a nonconforming Identifier is found.
+    NAME_ERROR : Exception;
+
+    -- ID_String imposes a few restrictions, as we need both
+    -- "+", "-"  and such operations to be valid Identifiers;
+    -- none of its characters may be whitespace, and it may
+    -- not parse as a valid number.
     SubType ID_String is String
-    with Static_Predicate => Valid_ID( ID_String )
-                             and not Valid_Number(ID_String);
+    with Dynamic_Predicate => (Valid_ID( ID_String )
+                               and not Valid_Number(ID_String))
+				or else raise Name_Error;
 
     -- Identifier is a type that represents a user's variable-
     -- or function-name, it is a private type.

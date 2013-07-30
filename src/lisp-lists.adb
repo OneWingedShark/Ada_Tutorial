@@ -14,7 +14,8 @@ Package body LISP.Lists is
     -- The LISP 1.5 manual is available here:
     -- http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf
     -- Page 4 gives the comma-seperated list as equivelant the
-    -- space seperated list.
+    -- space seperated list. (Though the coma-space sequence
+    -- ought to be read as a single delimeter; as per the paper.)
    SEPARATOR : constant Standard.String := ", ";
 
 
@@ -126,14 +127,9 @@ Package body LISP.Lists is
 
     -- The "Function_List_Pkg" paackages define a mappping of
     -- String to the appropriate functions (precompiled/
-    -- internal, or user/external); I would like to use the
-    -- ID_String as the Key, however a compiler-error in my
-    -- compiler [GNAT GPL 2012 (20120509)] prevents that.
-    --
-    -- WORKAROUND:	All key insertions & retrievals be of
-    --			type Name_String.
+    -- internal, or user/external).
    Package Function_List_Pkg is new  C.Indefinite_Ordered_Maps
-     (  Key_Type	=> String,
+     (  Key_Type	=> ID_String,
         Element_Type	=> Function_Type
      );
 
@@ -141,7 +137,7 @@ Package body LISP.Lists is
     -- functions with their names; in this case, however, the
     -- functions are actually lists which will be executed.
    Package User_Function_List_Pkg is new C.Indefinite_Ordered_Maps
-     (  Key_Type	=> String,
+     (  Key_Type	=> ID_String,
         Element_Type	=> List
      );
 
@@ -303,30 +299,9 @@ Package body LISP.Lists is
         or else (For all E of Input => E.Get_Type = T);
    End Homoginized_List;
 
-    -- Unfortionately, because we're directly text-processing
-    -- LISP, rather than processing a binary or a modified text-
-    -- format, this means we need to do character-processing
-    -- rather than the more simple method of reading in the
-    -- elements as elements.
-
-    -- Because reading is itself more complicated we will
-    -- make the function itself SEPARATE.
-    procedure Read(
-		    Stream : not null access Root_Stream_Type'Class;
-		    Item   : out LIST
-		  ) is separate;
 
 
-    -- Write is simple: wirte out the string representation of
-    -- the list to the stream.
-    procedure Write(
-		    Stream : not null access Root_Stream_Type'Class;
-		    Item   : in LIST
-		   )  is
-    begin
-	String'Write( Stream, Item.To_String );
-    end Write;
-
+    package body Streams is separate;
 
     -- We want Operations to have the full-visibility for
     -- the purpose of registering them.

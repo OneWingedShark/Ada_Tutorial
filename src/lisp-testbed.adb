@@ -3,8 +3,7 @@ LISP.Elements,
 LISP.Lists,
 Ada.Text_IO;
 
-
-Procedure Testbed is
+Procedure LISP.Testbed is
 
    Use LISP.Lists, LISP.Elements;
 
@@ -69,7 +68,7 @@ Procedure Testbed is
 --    Ada.Text_IO.Put('['&Enclosing_Entity&']');
       --LIST'Read( INPUT, Working );
 	case Count is
-	When 8		=> Working.Prepend( Create("+") );
+	When 8 | 3		=> Working.Prepend( Create("+", Identifier => True));
 	--When 3 | 5 | 6	=> Working:= Create(Count) & Create(Working);
 	When 1 		=> Declare
 			    Insertion_List : Constant List:= Create("car") &
@@ -150,4 +149,4 @@ exception
 	begin
 	    null;
 	end TEST_STREAM_READ;
-End Testbed;
+End LISP.Testbed;

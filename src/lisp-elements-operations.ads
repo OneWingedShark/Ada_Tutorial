@@ -1,9 +1,9 @@
 With LISP.Lists;
 Package LISP.Elements.Operations is
 
-    -- It would be more convenient to refer to "List" in
-    -- parameters than LISP.Lists.List, though there is nothing
-    -- preventing us from using the fully-qualified format.
+    --  It would be more convienient to refer to "List" in
+    --  parameters than LISP.Lists.List, though there is nothing
+    --  preventing us from using the fully-qualified name format.
     Use LISP.Lists;
 
     -- Operable tells us that the list can indeed be operated

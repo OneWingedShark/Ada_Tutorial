@@ -9,7 +9,7 @@ Ada.Streams.Stream_IO, Ada.Text_IO.Text_Streams,
 Ada.Text_IO;      -- Ada.Text_IO: exactly what it says.
 
 -- This names the current compilation unit "working".
-Procedure Working is
+Procedure LISP.Working is
 
     Function Open( File_Name : String ) Return Ada.Text_IO.File_Type is
 	Use Ada.Text_IO;
@@ -135,4 +135,4 @@ Begin
    -- Print some text to indicate an orderly shutdown was achieved.
    Ada.Text_IO.Put_Line( "Goodbye." );
 
-End Working;
+End LISP.Working;

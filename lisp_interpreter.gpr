@@ -1,9 +1,9 @@
 project Lisp_Interpreter is
 
-   for Source_Dirs use (".\**");
+   for Source_Dirs use ("./**");
    for Object_Dir use "obj";
    for Exec_Dir use ".";
-   for Main use ("testbed.adb", "working.adb");
+   for Main use ("lisp-testbed.adb", "lisp-working.adb");
 
    package Ide is
       for Documentation_Dir use "doc";
@@ -17,6 +17,8 @@ project Lisp_Interpreter is
 
    package Compiler is
       for Default_Switches ("ada") use ("-O3", "-gnato", "-fstack-check", "-gnatE", "-g", "-gnata", "-gnat12");
+      for Switches ("lisp-working.ads") use ("-Os", "-gnato", "-fstack-check", "-gnatE", "-g", "-gnata", "-gnat12");
+      for Switches ("lisp-working.adb") use ("-Os", "-gnato", "-fstack-check", "-gnatE", "-g", "-gnata", "-gnat12");
    end Compiler;
 
 end Lisp_Interpreter;
